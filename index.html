@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>🌀 Генератор Тайтлов</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fafafa;
+      color: #1e1e1e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 0.3em;
+    }
+
+    p {
+      margin-bottom: 1.5em;
+      font-size: 1em;
+      color: #666;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    input {
+      padding: 0.8em;
+      font-size: 1em;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 1em;
+      width: 240px;
+    }
+
+    button {
+      padding: 0.8em 1.2em;
+      font-size: 1em;
+      background-color: #111;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #333;
+    }
+
+    .result {
+      margin-top: 2em;
+      font-size: 1.5em;
+      font-weight: 500;
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .example {
+      margin-top: 3em;
+      font-size: 0.9em;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧘 Кто ты в этом проекте?</h1>
+  <p>Введи своё имя и получи титул, который объяснит всё, что нужно о тебе знать</p>
+
+  <input type="text" id="userName" placeholder="Например, Анна">
+  <br>
+  <button onclick="generateDeepTrash()">Призвать титул</button>
+
+  <div class="result" id="titleResult"></div>
+
+  <script>
+    const intros = [
+      "UX-шаман",
+      "Дизайнер постиронии",
+      "Архитектор багов",
+      "Продакт-анархист",
+      "Тимлид-провидец",
+      "Разработчик вечной беты",
+      "Менеджер без лица",
+      "Наблюдатель незадачливых созвонов",
+      "Дух мертвых тасок",
+      "Повелитель табличных откровений",
+      "Оператор выгоревших фич",
+      "Собиратель фидбека и боли"
+    ];
+
+    const middles = [
+      "внутри интерфейсов",
+      "под покровом дедлайнов",
+      "в хаосе product-решений",
+      "на краю канбан-доски",
+      "в обсессии выравнивания по пикселям",
+      "в ритуале ежедневных стендапов",
+      "между абстракцией и багом",
+      "в сновидении рефакторинга",
+      "на эмоциональной карте пользователей",
+      "в зацикленном лупе перформанса"
+    ];
+
+    const endings = [
+      "проклятых ревью и неутверждённых флоу",
+      "где горят спринты и молчит тимлид",
+      "на стыке таймлайна и экзистенциального вопроса",
+      "среди криков багов и шороха апдейтов",
+      "где A/B тесты уже не спасают",
+      "в тени roadmap'а и света burn-out'а",
+      "где даже Figma устала открываться",
+      "в диалогах с внутренним скрам-мастером",
+      "среди Jira-комментариев, что никто не читал",
+      "где каждый пуш — как исповедь"
+    ];
+
+    function getRandom(array) {
+      return array[Math.floor(Math.random() * array.length)];
+    }
+
+    function generateDeepTrash() {
+      const name = document.getElementById("userName").value.trim();
+      const result = document.getElementById("titleResult");
+
+      if (!name) {
+        result.innerText = "Введи имя. Без имени — без судьбы.";
+        return;
+      }
+
+      const intro = getRandom(intros);
+      const middle = getRandom(middles);
+      const end = getRandom(endings);
+
+      result.innerText = `${name} — ${intro} ${middle}, ${end}`;
+    }
+  </script>
+
+</body>
+</html>
